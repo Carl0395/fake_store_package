@@ -5,7 +5,6 @@ Este paquete de Flutter permite interactuar con la [Fake Store API](https://fake
 ## Características
 
 - Obtener una lista de productos.
-- Crear un producto con valores por defecto.
 - Obtener una lista de carritos.
 
 ## Instalación
