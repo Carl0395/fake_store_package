@@ -63,14 +63,18 @@ result.fold(
 
 Tipos de errores posibles (Failure):
 
+- BadRequestFailure
 - ServerFailure
 - ParsingFailure
 - ConnectionFailure
+- UnknownFailure
 
 🧱 Modelos disponibles
 
 - ProductModel
 - CartModel
+- ProductQuantityModel
+- RatingModel
 
 🔧 Internamente el paquete usa:
 
