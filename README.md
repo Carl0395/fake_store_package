@@ -35,3 +35,46 @@ void main() async {
 ```
 
 👉 Para ver un ejemplo completo, consulta la carpeta example/ del repositorio.
+
+## 📘 Documentación de funciones
+
+- Obtener una lista de productos.
+
+```dart
+final result = await FakeStorePackage.getProducts();
+```
+
+- Obtener todos los carritos de compra.
+
+```dart
+final result = await FakeStorePackage.getCarts();
+```
+
+❗ Manejo de errores
+
+El paquete utiliza el tipo Either (de package:dartz) para manejar errores de forma funcional:
+
+```dart
+result.fold(
+  (error) => print('Ocurrió un error: ${error.message}'),
+  (data) => print('Éxito'),
+);
+```
+
+Tipos de errores posibles (Failure):
+
+- ServerFailure
+- ParsingFailure
+- ConnectionFailure
+
+🧱 Modelos disponibles
+
+- ProductModel
+- CartModel
+
+🔧 Internamente el paquete usa:
+
+- dartz para manejo de errores
+- http para peticiones HTTP
+- Un HttpHelper interno para centralizar llamadas a la API
+
