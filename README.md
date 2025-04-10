@@ -23,8 +23,6 @@ dependencies:
 
 ## Ejemplo rápido
 
-Aquí tienes un ejemplo básico de cómo usar el paquete:
-
 ```dart
 import 'package:fake_store_package/fake_store_package.dart';
 
