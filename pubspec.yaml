@@ -1,7 +1,7 @@
 name: fake_store_package
-description: "A new Flutter package project."
+description: "Package of flutter for consume the fake store api."
 version: 0.0.1
-homepage: null
+homepage: https://github.com/Carl0395/fake_store_package
 
 environment:
   sdk: ^3.7.0

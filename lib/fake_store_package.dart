@@ -8,7 +8,8 @@ import 'package:fake_store_package/util/http_helper.dart';
 import 'package:fake_store_package/util/routes.dart';
 
 class FakeStorePackage {
-  Future<Either<Failure, List<ProductModel>>> getProducts() async {
+  FakeStorePackage._();
+  static Future<Either<Failure, List<ProductModel>>> getProducts() async {
     final res = await HttpHelper.get(Routes.products);
 
     return res.fold((failure) => Left(failure), (data) {
@@ -23,7 +24,7 @@ class FakeStorePackage {
     });
   }
 
-  Future<Either<Failure, List<CartModel>>> getCarts() async {
+  static Future<Either<Failure, List<CartModel>>> getCarts() async {
     final res = await HttpHelper.get(Routes.carts);
 
     return res.fold((failure) => Left(failure), (data) {

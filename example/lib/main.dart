@@ -36,7 +36,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final fakeStorePackage = FakeStorePackage();
   int currentIndex = 0;
   List<ProductModel>? products;
   List<CartModel>? carts;
@@ -50,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> getProducts() async {
     if (products != null) return;
-    final data = await fakeStorePackage.getProducts();
+    final data = await FakeStorePackage.getProducts();
     data.fold(
       (failure) {
         setState(() {
@@ -67,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> getCarts() async {
     if (carts != null) return;
-    final data = await fakeStorePackage.getCarts();
+    final data = await FakeStorePackage.getCarts();
     data.fold(
       (failure) {
         setState(() {

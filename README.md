@@ -1,39 +1,39 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Fake Store Package
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+Este paquete de Flutter permite interactuar con la [Fake Store API](https://fakestoreapi.com/), una API falsa que proporciona datos de productos, carritos y usuarios para propósitos de prueba y desarrollo.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+## Características
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+- Obtener una lista de productos.
+- Crear un producto con valores por defecto.
+- Obtener una lista de carritos.
 
-## Features
+## Instalación
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Para utilizar este paquete, añade `fake_store_package` a las dependencias de tu proyecto en el archivo `pubspec.yaml`:
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  fake_store_package:
+    git:
+      url: https://github.com/Carl0395/fake_store_package.git
 ```
 
-## Additional information
+## Ejemplo rápido
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+Aquí tienes un ejemplo básico de cómo usar el paquete:
+
+```dart
+import 'package:fake_store_package/fake_store_package.dart';
+
+void main() async {
+  final products = await FakeStoreApi.getProducts();
+  for (var product in products) {
+    print('${product.id}: ${product.title} - \$${product.price}');
+  }
+}
+```
+
+👉 Para ver un ejemplo completo, consulta la carpeta example/ del repositorio.
