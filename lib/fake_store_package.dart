@@ -17,6 +17,8 @@ class FakeStorePackage {
   static Future<Either<Failure, CartModel>> getCart(String id) => CartsApi.getCart(id);
 
   static Future<Either<Failure, List<ProductModel>>> getProducts() => ProductsApi.getProducts();
+  static Future<Either<Failure, List<String>>> getCategories() => ProductsApi.getCategories();
+  static Future<Either<Failure, List<ProductModel>>> getProductsByCategory(String category) => ProductsApi.getProductsByCategory(category);
   
   static Future<Either<Failure, UserModel>> getUser(String id) => UsersApi.getUser(id);
   static Future<Either<Failure, UserModel>> createUser(UserModel user) => UsersApi.createUser(user);
