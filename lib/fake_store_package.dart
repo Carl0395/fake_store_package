@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dartz/dartz.dart';
 import 'package:fake_store_package/api/auth/auth_api.dart';
 import 'package:fake_store_package/api/carts/carts_api.dart';

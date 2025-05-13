@@ -21,4 +21,36 @@ class ProductsApi {
       }
     });
   }
+
+  static Future<Either<Failure, List<String>>> getCategories() async {
+    final res = await HttpHelper.get(Routes.categories);
+
+    return res.fold((failure) => Left(failure), (data) {
+      try {
+        final List<String> categories = json.decode(data.body);
+        return Right(categories);
+      } catch (e) {
+        return Left(ParsingFailure(e.toString()));
+      }
+    });
+  }
+
+  static Future<Either<Failure, List<ProductModel>>> getProductsByCategory(
+    String category,
+  ) async {
+    final res = await HttpHelper.get(
+      Routes.productsByCategory.replaceAll(':category', category),
+    );
+
+    return res.fold((failure) => Left(failure), (data) {
+      try {
+        final List<dynamic> jsonData = json.decode(data.body);
+        final List<ProductModel> products =
+            jsonData.map((item) => ProductModel.fromJson(item)).toList();
+        return Right(products);
+      } catch (e) {
+        return Left(ParsingFailure(e.toString()));
+      }
+    });
+  }
 }
