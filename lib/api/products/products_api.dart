@@ -27,9 +27,8 @@ class ProductsApi {
 
     return res.fold((failure) => Left(failure), (data) {
       try {
-        final jsonData = json.decode(data.body);
         final List<String> categories =
-            jsonData.map((item) => item.toString()).toList();
+            (json.decode(data.body) as List).map((item) => '$item').toList();
         return Right(categories);
       } catch (e) {
         return Left(ParsingFailure(e.toString()));
