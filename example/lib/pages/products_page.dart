@@ -16,6 +16,7 @@ class ProductsPage extends StatelessWidget {
       return Center(child: CircularProgressIndicator());
     }
     return ListView.builder(
+      itemCount: products?.length,
       itemBuilder: (context, index) {
         final product = products![index];
         return Card(
