@@ -12,6 +12,10 @@ class BadRequestFailure extends Failure {
   BadRequestFailure(super.message);
 }
 
+class UnauthorizedFailure extends Failure {
+  UnauthorizedFailure(super.message);
+}
+
 class ServerFailure extends Failure {
   ServerFailure(super.message);
 }

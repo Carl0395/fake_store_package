@@ -36,6 +36,8 @@ class HttpHelper {
           return Right(response);
         case 400:
           return Left(BadRequestFailure(response.body));
+        case 401:
+          return Left(UnauthorizedFailure(response.body));
         case 500:
           return Left(ServerFailure(response.body));
         default:
