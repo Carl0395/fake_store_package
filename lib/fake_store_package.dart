@@ -11,7 +11,7 @@ import 'package:fake_store_package/util/failures.dart';
 class FakeStorePackage {
   FakeStorePackage._();
 
-  static Future<Either<Failure, String>> login({required String email, required String password}) => AuthApi.login(email: email, password: password);
+  static Future<Either<Failure, String>> login({required String username, required String password}) => AuthApi.login(username: username, password: password);
   
   static Future<Either<Failure, List<CartModel>>> getCarts() => CartsApi.getCarts();
   static Future<Either<Failure, CartModel>> getCart(String id) => CartsApi.getCart(id);

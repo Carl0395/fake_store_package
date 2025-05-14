@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
-import 'package:fake_store_package/models/product_model.dart';
 import 'package:fake_store_package/models/user_model.dart';
 import 'package:fake_store_package/util/failures.dart';
 import 'package:fake_store_package/util/http_helper.dart';
