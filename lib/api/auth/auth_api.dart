@@ -7,11 +7,11 @@ import 'package:fake_store_package/util/routes.dart';
 
 class AuthApi {
   static Future<Either<Failure, String>> login({
-    required String email,
+    required String username,
     required String password,
   }) async {
     final res = await HttpHelper.post(Routes.login, {
-      "email": email,
+      "username": username,
       "password": password,
     });
 
