@@ -11,15 +11,26 @@ import 'package:fake_store_package/util/failures.dart';
 class FakeStorePackage {
   FakeStorePackage._();
 
-  static Future<Either<Failure, String>> login({required String username, required String password}) => AuthApi.login(username: username, password: password);
-  
-  static Future<Either<Failure, List<CartModel>>> getCarts() => CartsApi.getCarts();
-  static Future<Either<Failure, CartModel>> getCart(String id) => CartsApi.getCart(id);
+  static Future<Either<Failure, String>> login({
+    required String username,
+    required String password,
+  }) => AuthApi.login(username: username, password: password);
 
-  static Future<Either<Failure, List<ProductModel>>> getProducts() => ProductsApi.getProducts();
-  static Future<Either<Failure, List<String>>> getCategories() => ProductsApi.getCategories();
-  static Future<Either<Failure, List<ProductModel>>> getProductsByCategory(String category) => ProductsApi.getProductsByCategory(category);
-  
-  static Future<Either<Failure, UserModel>> getUser(String id) => UsersApi.getUser(id);
-  static Future<Either<Failure, UserModel>> createUser(UserModel user) => UsersApi.createUser(user);
+  static Future<Either<Failure, List<CartModel>>> getCarts() =>
+      CartsApi.getCarts();
+  static Future<Either<Failure, CartModel>> getCart(String id) =>
+      CartsApi.getCart(id);
+
+  static Future<Either<Failure, List<ProductModel>>> getProducts() =>
+      ProductsApi.getProducts();
+  static Future<Either<Failure, List<String>>> getCategories() =>
+      ProductsApi.getCategories();
+  static Future<Either<Failure, List<ProductModel>>> getProductsByCategory(
+    String category,
+  ) => ProductsApi.getProductsByCategory(category);
+
+  static Future<Either<Failure, UserModel>> getUser(String id) =>
+      UsersApi.getUser(id);
+  static Future<Either<Failure, int>> createUser(UserModel user) =>
+      UsersApi.createUser(user);
 }

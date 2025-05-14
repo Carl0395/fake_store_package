@@ -21,14 +21,14 @@ class UsersApi {
     });
   }
 
-  static Future<Either<Failure, UserModel>> createUser(UserModel user) async {
+  static Future<Either<Failure, int>> createUser(UserModel user) async {
     final res = await HttpHelper.post(Routes.users, user.toJson());
 
     return res.fold((failure) => Left(failure), (data) {
       try {
         final dynamic jsonData = json.decode(data.body);
-        UserModel user = UserModel.fromJson(jsonData);
-        return Right(user);
+        final int id = jsonData["id"];
+        return Right(id);
       } catch (e) {
         return Left(ParsingFailure(e.toString()));
       }
