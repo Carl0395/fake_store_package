@@ -66,6 +66,7 @@ Tipos de errores posibles (Failure):
 - ServerFailure
 - ParsingFailure
 - ConnectionFailure
+- UnauthorizedFailure
 - UnknownFailure
 
 🧱 Modelos disponibles
@@ -81,3 +82,52 @@ Tipos de errores posibles (Failure):
 - http para peticiones HTTP
 - Un HttpHelper interno para centralizar llamadas a la API
 
+#
+# 🧪 Pruebas Unitarias en `fake_store_package`
+
+Este paquete incluye una suite de pruebas unitarias para garantizar la fiabilidad y robustez de las funcionalidades principales. A continuación, se detallan las pruebas implementadas y cómo ejecutarlas.
+
+## 📁 Estructura de Pruebas
+
+Las pruebas se encuentran en el directorio `test/` y cubren los siguientes módulos:
+
+- **`carts_api_test.dart`**: Pruebas para la clase `CartsApi`, incluyendo:
+  - `getCarts()`: Verifica la obtención de la lista de carritos.
+  - `getCart(String id)`: Verifica la obtención de un carrito específico por ID.
+
+- **`products_api_test.dart`**: Pruebas para la clase `ProductsApi`, incluyendo:
+  - `getProducts()`: Verifica la obtención de la lista de productos.
+  - `getCategories()`: Verifica las obtención de la lista de categorías.
+  - `getProductsByCategory(String category)`: Verifica la obtención de productos por categoría.
+
+- **`users_api_test.dart`**: Pruebas para la clase `UsersApi`, incluyendo:
+  - `getUser(String id)`: Verifica la obtención de un usuario por id.
+  - `createUser(UserModel user)`: Verifica la creación de un usuario.
+
+- **`models_test.dart`**: Pruebas para los modelos de datos, incluyendo:
+  - `CartModel`: Verifica la serialización y deserialización.
+  - `ProductModel`: Verifica la serialización y deserialización.
+  - `ProductQuantityModel`: Verifica la serialización y deserialización.
+  - `RatingModel`: Verifica la serialización y deserialización.
+  - `UserModel`: Verifica la serialización y deserialización.
+
+- **`failures_test.dart`**: Pruebas para la clase `Failures`, incluyendo:
+  - `BadRequestFailure`: Verifica la instancia de la clase y sus metodos.
+  - `UnauthorizedFailure`: Verifica la instancia de la clase y sus metodos.
+  - `ServerFailure`: Verifica la instancia de la clase y sus metodos.
+  - `ParsingFailure`: Verifica la instancia de la clase y sus metodos.
+  - `ConnectionFailure`: Verifica la instancia de la clase y sus metodos.
+  - `UnknownFailure`: Verifica la instancia de la clase y sus metodos.
+
+## 🧰 Herramientas Utilizadas
+
+- **Framework de Pruebas**: [flutter_test](https://pub.dev/packages/flutter_test)
+- **Mocking**: [mocktail](https://pub.dev/packages/mocktail)
+- **Programación Funcional**: [dartz](https://pub.dev/packages/dartz)
+
+## 🚀 Ejecución de Pruebas
+
+Para ejecutar todas las pruebas unitarias, utiliza el siguiente comando en la raíz del proyecto:
+
+```bash
+flutter test
