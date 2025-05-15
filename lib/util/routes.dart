@@ -1,5 +1,5 @@
 class Routes {
-  Routes._();
+  Routes._(); // coverage:ignore-line
   static const _domain = 'https://fakestoreapi.com';
 
   static const login = '$_domain/auth/login';
