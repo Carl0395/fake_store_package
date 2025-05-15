@@ -6,11 +6,15 @@ import 'package:fake_store_package/util/http_helper.dart';
 import 'package:fake_store_package/util/routes.dart';
 
 class AuthApi {
-  static Future<Either<Failure, String>> login({
+  final IHttpHelper httpHelper;
+
+  AuthApi(this.httpHelper);
+
+  Future<Either<Failure, String>> login({
     required String username,
     required String password,
   }) async {
-    final res = await HttpHelper.post(Routes.login, {
+    final res = await httpHelper.post(Routes.login, {
       "username": username,
       "password": password,
     });

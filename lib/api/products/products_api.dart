@@ -7,8 +7,12 @@ import 'package:fake_store_package/util/http_helper.dart';
 import 'package:fake_store_package/util/routes.dart';
 
 class ProductsApi {
-  static Future<Either<Failure, List<ProductModel>>> getProducts() async {
-    final res = await HttpHelper.get(Routes.products);
+  final IHttpHelper httpHelper;
+
+  ProductsApi(this.httpHelper);
+
+  Future<Either<Failure, List<ProductModel>>> getProducts() async {
+    final res = await httpHelper.get(Routes.products);
 
     return res.fold((failure) => Left(failure), (data) {
       try {
@@ -22,8 +26,8 @@ class ProductsApi {
     });
   }
 
-  static Future<Either<Failure, List<String>>> getCategories() async {
-    final res = await HttpHelper.get(Routes.categories);
+  Future<Either<Failure, List<String>>> getCategories() async {
+    final res = await httpHelper.get(Routes.categories);
 
     return res.fold((failure) => Left(failure), (data) {
       try {
@@ -36,10 +40,10 @@ class ProductsApi {
     });
   }
 
-  static Future<Either<Failure, List<ProductModel>>> getProductsByCategory(
+  Future<Either<Failure, List<ProductModel>>> getProductsByCategory(
     String category,
   ) async {
-    final res = await HttpHelper.get(
+    final res = await httpHelper.get(
       Routes.productsByCategory.replaceAll(':category', category),
     );
 

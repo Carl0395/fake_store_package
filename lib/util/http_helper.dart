@@ -5,14 +5,23 @@ import 'package:dartz/dartz.dart';
 import 'package:fake_store_package/util/failures.dart';
 import 'package:http/http.dart' as http;
 
-class HttpHelper {
-  HttpHelper();
+abstract class IHttpHelper {
+  Future<Either<Failure, dynamic>> get(String url);
 
-  static Future<Either<Failure, http.Response>> get(String url) async {
+  Future<Either<Failure, dynamic>> post<T>(
+    String url,
+    Map<String, dynamic> body,
+  );
+}
+
+class HttpHelper implements IHttpHelper {
+  @override
+  Future<Either<Failure, dynamic>> get(String url) async {
     return _request(() => http.get(Uri.parse(url)));
   }
 
-  static Future<Either<Failure, http.Response>> post<T>(
+  @override
+  Future<Either<Failure, dynamic>> post<T>(
     String url,
     Map<String, dynamic> body,
   ) async {
@@ -25,7 +34,7 @@ class HttpHelper {
     );
   }
 
-  static Future<Either<Failure, http.Response>> _request<T>(
+  static Future<Either<Failure, dynamic>> _request<T>(
     Future<http.Response> Function() request,
   ) async {
     try {

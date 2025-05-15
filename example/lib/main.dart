@@ -4,6 +4,7 @@ import 'package:fake_store_package/fake_store_package.dart';
 import 'package:fake_store_package/models/cart_model.dart';
 import 'package:fake_store_package/models/product_model.dart';
 import 'package:fake_store_package/util/failures.dart';
+import 'package:fake_store_package/util/http_helper.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -40,6 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<ProductModel>? products;
   List<CartModel>? carts;
   Failure? failure;
+  final fakeStorePackage = FakeStorePackage(HttpHelper());
 
   @override
   void initState() {
@@ -49,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> getProducts() async {
     if (products != null) return;
-    final data = await FakeStorePackage.getProducts();
+    final data = await fakeStorePackage.getProducts();
     data.fold(
       (failure) {
         setState(() {
@@ -66,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> getCarts() async {
     if (carts != null) return;
-    final data = await FakeStorePackage.getCarts();
+    final data = await fakeStorePackage.getCarts();
     data.fold(
       (failure) {
         setState(() {

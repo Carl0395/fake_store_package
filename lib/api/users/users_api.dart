@@ -7,8 +7,12 @@ import 'package:fake_store_package/util/http_helper.dart';
 import 'package:fake_store_package/util/routes.dart';
 
 class UsersApi {
-  static Future<Either<Failure, UserModel>> getUser(String id) async {
-    final res = await HttpHelper.get('${Routes.users}/$id');
+  final IHttpHelper httpHelper;
+
+  UsersApi(this.httpHelper);
+
+  Future<Either<Failure, UserModel>> getUser(String id) async {
+    final res = await httpHelper.get('${Routes.users}/$id');
 
     return res.fold((failure) => Left(failure), (data) {
       try {
@@ -21,8 +25,8 @@ class UsersApi {
     });
   }
 
-  static Future<Either<Failure, int>> createUser(UserModel user) async {
-    final res = await HttpHelper.post(Routes.users, user.toJson());
+  Future<Either<Failure, int>> createUser(UserModel user) async {
+    final res = await httpHelper.post(Routes.users, user.toJson());
 
     return res.fold((failure) => Left(failure), (data) {
       try {
